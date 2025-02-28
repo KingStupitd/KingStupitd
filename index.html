@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anniversary</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .background-container {
+            background-image: url('Resources/03bc370c73b9cd4b535991e245d6f21f-ezgif.com-video-to-gif-converter.gif');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .jumbotron {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .fontAdhun {
+            font-family: 'Adhun';
+            src: url('Resources/Adhun.otf');
+        }
+
+        .typewriter h4 {
+            overflow: hidden;
+            /* Ensures the content is not revealed until the animation */
+            border-right: .15em solid orange;
+            /* The typwriter cursor */
+            white-space: nowrap;
+            /* Keeps the content on a single line */
+            margin: 0 auto;
+            /* Gives that scrolling effect as the typing happens */
+            letter-spacing: .15em;
+            /* Adjust as needed */
+            animation:
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+
+        /* The typing effect */
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        /* The typewriter cursor effect */
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: orange;
+            }
+        }
+
+        html,
+        body {
+            overflow: hidden;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-container">
+        <div class="container" style="opacity: 0.8;">
+            <div class="jumbotron mt-5 h-100">
+                <div class="text-center">
+                    <div class="rounded-circle overflow-hidden mb-3"
+                        style="width: 150px; height: 150px; margin: 0 auto; border: 10px solid #e71095;">
+                        <img src="Resources/casal-dudu.gif" class="img-fluid" alt="Image">
+                    </div>
+                    <div class="p-4 bg-dark text-white rounded text-left"
+                        style="opacity: 0.8; max-height: 300px; overflow-y: auto;">
+                        <h1 class="mb-5">Halooo Sayangg</h1>
+                        <div class="typewriter" id="typedtext">
+                        </div>
+                    </div>
+
+                    {{-- <button class="btn btn-success">
+                        <i class="fas fa-heart"></i> Iyaa Sayang
+                        </button> --}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <audio id="background-audio" src="Resources/sound.mp3" loop></audio>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // set up text to print, each item in array is new line
+        var aText = new Array(
+            "Hmmm terimakasih yaa sudah mau berhubungan dengan akuu,","sudah membuat bahagia akuu",
+            "",
+            "aku minta maaf juga untuk apa yang aku perbuat hingga menyakiti,buat badmood,buat sedih ayangg",
+            "",
+            "Gak kerasa yah sudah satu bulan, padahal kayak masih baru kemarin kita jalanin hubungan ini.",
+            "",
+            "Kita sudah banyak lewatin rintangan yang sulit bahkan badai besar pun sudah pernah lewat, dan kita bisa bertahan hingga sekarang, kita hebat sekaliii yahh.",
+            "",
+            "Aku sangat beruntung bisa bertemu ayang walau berawal dari tidak sengaja jadi punya tujuan bersama.",
+            "",
+            "Terima kasih sudah menjadi sumber kebahagiaan dan kekuatanku, merubah hidup ku yang sepi jadi berwarna.",
+            "",
+            "Aku sayang banget sama ayang, semoga kita bisa terus bersama sampai tujuan bersama",
+            "",
+            "Bunga mawar di taman,","Harumnya semerbak wangi.","Semoga kita naik ke pelaminan,","Menjalani hidup penuh harmoni.",
+            "",
+            "Sekali lagi terima kasihhh sudah ada dalam hidup kuuu.",
+            "",
+            "I LOVE YOU SO MUCH SAYANGGGG",
+            "",
+            "Happy 1st Month Anniversary",
+        );
+        var iSpeed = 30; // time delay of print out
+        var iIndex = 0; // start printing array at this posision
+        var iArrLength = aText[0].length; // the length of the text array
+        var iScrollAt = 20; // start scrolling up at this many lines
+
+        var iTextPos = 0; // initialise text position
+        var sContents = ''; // initialise contents variable
+        var iRow; // initialise current row
+
+        function typewriter() {
+            sContents = ' ';
+            iRow = Math.max(0, iIndex - iScrollAt);
+            var destination = document.getElementById("typedtext");
+
+            while (iRow < iIndex) {
+                sContents += aText[iRow++] + '<br />';
+            }
+            destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
+            if (iTextPos++ == iArrLength) {
+                iTextPos = 0;
+                iIndex++;
+                if (iIndex != aText.length) {
+                    iArrLength = aText[iIndex].length;
+                    setTimeout("typewriter()", 500);
+                }
+            } else {
+                setTimeout("typewriter()", iSpeed);
+            }
+        }
+
+        // Array of image URLs and delay times
+        var images = [{
+                src: "Resources/casal-dudu.gif",
+                delay: 3800
+            },
+            {
+                src: "Resources/bubu-dudu-sseeyall.gif",
+                delay: 3700
+            },
+            {
+                src: "Resources/dudu-bubu-riding-bikes-happy-together.gif",
+                delay: 3500
+            },
+            {
+                src: "Resources/boo-bubu-dudu-fight.gif",
+                delay: 5800
+            },
+            {
+                src: "Resources/tkthao219-bubududu.gif",
+                delay: 3600
+            },
+            {
+                src: "Resources/bubu-dudu-bubu.gif",
+                delay: 3600
+            },
+            {
+                src: "Resources/tkthao219-bubududu(1).gif",
+                delay: 3700
+            },
+            {
+                src: "Resources/tkthao219-bubududu(2).gif",
+                delay: 3500
+            },
+            {
+                src: "Resources/bubu-dudu-bride.gif",
+                delay: 6500
+            },
+            {
+                src: "Resources/cheek-kisses-bubu.gif",
+                delay: 100000
+            },
+        ];
+        var currentIndex = 0;
+
+        function changeImage() {
+            var imgElement = document.querySelector(".rounded-circle img");
+            currentIndex = (currentIndex + 1) % images.length;
+            imgElement.src = images[currentIndex].src;
+            setTimeout(changeImage, images[currentIndex].delay);
+        }
+
+        // Start changing images
+        setTimeout(changeImage, images[0].delay);
+
+        // Play background audio and skip first 6 seconds
+        var audio = document.getElementById("background-audio");
+        audio.currentTime = 6;
+        audio.play();
+
+        typewriter();
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
